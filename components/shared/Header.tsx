@@ -4,6 +4,7 @@ import Image from "next/image";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { Button } from "../ui/button";
 import NavItems from "./NavItems";
+// import TestDB from "./TestDB";
 import MobileNav from "./MobileNav";
 
 const Header = () => {
@@ -20,6 +21,7 @@ const Header = () => {
             alt="Evently Logo"
           />
         </Link>
+        {/* <TestDB /> */}
         {/* clerk authetication dependent display */}
         <SignedIn>
           <nav className="md:flex-between hidden w-full max-w-xs">
