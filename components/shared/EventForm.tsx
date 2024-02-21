@@ -2,7 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import React from "react";
+import React, { useState } from "react";
 import * as z from "zod";
 
 import { Button } from "@/components/ui/button";
@@ -20,6 +20,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { eventFormSchema } from "@/lib/validator";
 import { eventDefaultValues } from "@/constants";
 import Dropdown from "./Dropdown";
+import { FileUploader } from "./FileUploader";
 
 type EventFormProps = {
   userId: string;
@@ -27,6 +28,7 @@ type EventFormProps = {
 };
 
 const EventForm = ({ userId, type }: EventFormProps) => {
+  const [files, setFiles] = useState<File[]>([]);
   const initialValues = eventDefaultValues;
 
   const form = useForm<z.infer<typeof eventFormSchema>>({
@@ -91,6 +93,22 @@ const EventForm = ({ userId, type }: EventFormProps) => {
                     placeholder="Description"
                     {...field}
                     className="textare rounded-2xl"
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="imageUrl"
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormControl className="h-72">
+                  <FileUploader
+                    onFieldChange={field.onChange}
+                    imageUrl={field.value}
+                    setFiles={setFiles}
                   />
                 </FormControl>
                 <FormMessage />
