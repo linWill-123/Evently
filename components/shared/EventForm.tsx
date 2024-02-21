@@ -16,8 +16,10 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { eventFormSchema } from "@/lib/validator";
 import { eventDefaultValues } from "@/constants";
+import Dropdown from "./Dropdown";
 
 type EventFormProps = {
   userId: string;
@@ -67,10 +69,28 @@ const EventForm = ({ userId, type }: EventFormProps) => {
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormControl>
-                  <Input
-                    placeholder="Category"
+                  <Dropdown
+                    onChangeHandler={field.onChange}
+                    value={field.value}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
+
+        <div className=" flex flex-col gap-5 md:flex-row">
+          <FormField
+            control={form.control}
+            name="description"
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormControl className="h-72">
+                  <Textarea
+                    placeholder="Description"
                     {...field}
-                    className="input-field"
+                    className="textare rounded-2xl"
                   />
                 </FormControl>
                 <FormMessage />
