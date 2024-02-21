@@ -19,9 +19,7 @@ export const createCategory = async ({
   }
 };
 
-export const getAllCategories = async ({
-  categoryName,
-}: CreateCategoryParams) => {
+export const getAllCategories = async () => {
   try {
     await connectToDatabase();
 
