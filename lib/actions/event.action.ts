@@ -26,7 +26,7 @@ export const createEvent = async ({
       organizer: userId,
     });
 
-    return JSON.parse(JSON.stringify(event));
+    return JSON.parse(JSON.stringify(newEvent));
   } catch (error) {
     handleError(error);
   }
