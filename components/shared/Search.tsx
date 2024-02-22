@@ -20,17 +20,16 @@ const Search = ({
       let newUrl = "";
       if (query) {
         newUrl = formUrlQuery({
-          params: "",
+          params: searchParams.toString(),
           key: "query",
           value: query,
         });
       } else {
         newUrl = removeKeysFromQuery({
-          params: "",
+          params: searchParams.toString(),
           keysToRemove: ["query"],
         });
       }
-
       router.push(newUrl, { scroll: false });
     }, 300);
 

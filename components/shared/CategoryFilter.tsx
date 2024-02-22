@@ -32,13 +32,13 @@ const CategoryFilter = () => {
     let newUrl = "";
     if (categories) {
       newUrl = formUrlQuery({
-        params: "",
+        params: searchParams.toString(),
         key: "category",
         value: category,
       });
     } else {
       newUrl = removeKeysFromQuery({
-        params: "",
+        params: searchParams.toString(),
         keysToRemove: ["category"],
       });
     }
