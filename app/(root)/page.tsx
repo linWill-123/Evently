@@ -15,7 +15,7 @@ export default async function Home({ searchParams }: SearchParamProps) {
   const events = await getAllEvents({
     query: searchText,
     category,
-    page: 1,
+    page,
     limit: 6,
   });
 
@@ -65,7 +65,7 @@ export default async function Home({ searchParams }: SearchParamProps) {
           emptyStateSubtext="Come back later"
           collectionType="All_Events"
           limit={6}
-          page={1}
+          page={page}
           totalPages={events?.totalPages}
         />
       </section>
